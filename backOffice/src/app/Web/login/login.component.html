@@ -1,0 +1,93 @@
+
+<div class="row">
+  <div class="col-xs-12">
+    <form (ngSubmit)="authendicated(f)" #f="ngForm">
+      <div class="row">
+        <div class="col-sm-5 form-group">
+          <label  >Name</label>
+          <input
+            type="text"
+            id="username"
+            class="form-control"
+            name="username"
+            ngModel
+            required="{{config.email_required}}"
+            email
+            #email="ngModel">
+          <span *ngIf="!email.valid && email.touched">  SVP entrer un emal valide</span>
+        </div>
+        <div class="col-sm-2 form-group">
+          <label for="password">password</label>
+          <input
+            type="password"
+            id="password"
+            class="form-control"
+            name="password"
+            ngModel
+            required
+            pattern="^[1-9]+[0-9]*$"
+          >
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <button class="btn btn-success" type="submit" [disabled]="!f.valid" >LOGIN</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<table>
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">user</th>
+    <th scope="col">password</th>
+
+  </tr>
+  </thead>
+  <tbody *ngIf="loginService.user">
+  <tr *ngFor="let user of loginService.user._embedded.web_users; let i = index " >
+    <th scope="row">{{i+1}}</th>
+
+    <td>  {{ user.username }}  </td>
+    <td>{{ user.password  }}</td>
+
+  </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+<!--<h2>Login</h2>
+<form [formGroup]="false" (ngSubmit)="false">
+ <div class="form-group">
+   <label  >Username</label>
+   <input type="text" formControlName="username" class="form-control">
+   <div *ngIf="true" class="invalid-feedback">
+     <div  >Username is required</div>
+   </div>
+   <div class="form-group">
+     <label  >Password</label>
+     <input type="password" formControlName="password" class="form-control">
+     <div *ngIf="false" class="invalid-feedback">
+       <div  >Password is required</div>
+     </div>
+   </div>
+   <div class="form-group">
+     <button  >
+       <span   class="spinner-border spinner-border-sm mr-1"></span>
+       Login
+     </button>
+     <a routerLink="/register" class="btn btn-link">Register</a>
+   </div>
+ </div></form> -->
