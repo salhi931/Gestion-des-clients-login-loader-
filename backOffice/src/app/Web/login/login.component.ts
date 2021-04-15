@@ -3,7 +3,7 @@ import {NgForm} from '@angular/forms';
 import {NgModule} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {LoginService} from '../../services/login.service';
-import {ConfigurationService} from "../../services/configuration.service";
+import {ConfigurationService} from '../../services/configuration.service';
 
 @Component({
   selector: 'app-login',
@@ -12,14 +12,19 @@ import {ConfigurationService} from "../../services/configuration.service";
 })
 export class LoginComponent implements OnInit {
   users: any;
-
-  constructor( public loginService: LoginService , private router: Router, private route: ActivatedRoute, private config: ConfigurationService) { }
+  login: any;
+  constructor( public loginService: LoginService , private router: Router, private route: ActivatedRoute, public config: ConfigurationService) { }
   ngOnInit(): void {
     this.loginService.getusers();
+    this.loginService.login_status.subscribe(data => {
+      this.login = data;
+    });
   }
   authendicated(form: NgForm){
     const username = form.value.username;
+    const password = form.value.password;
     console.log(username);
-    console.log(form.value.password);
+    console.log(password);
+
     this.loginService.authendicated(form);
   }}

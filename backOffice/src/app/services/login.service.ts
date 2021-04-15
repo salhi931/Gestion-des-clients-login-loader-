@@ -10,8 +10,10 @@ import {NgForm} from '@angular/forms';
 })
 export class LoginService implements OnInit{
   public user: any;
+  reponse: any;
   // tslint:disable-next-line:variable-name
   login_status = new EventEmitter<boolean>();
+  login_role = new EventEmitter<boolean>();
   constructor( private http: HttpClient) {
   }
   ngOnInit(): void {
@@ -24,10 +26,24 @@ export class LoginService implements OnInit{
       });
   }
   authendicated(form: NgForm){
-    this.http
-      .get('http://localhost:8080/web_users')
-      .subscribe(data => {
-        this.user = data;
-      });
+
+
+    this.http.get('http://localhost:8080/loginn/' + form.value.username + '/' + form.value.password).subscribe(data => {
+      console.log(data);
+      this.reponse = data;
+      if (this.reponse.login_status === false){
+        alert('le nom d\'utilisateur ou le password est incorrect');
+      }
+      if (this.reponse.login_status === true && this.reponse.login_role === true ){
+        this.login_status.emit(true);
+        this.login_role.emit(true);
+        alert('vous etes connectes en tant qu\'AdminSuperieur');
+      }
+      if (this.reponse.login_status === true && this.reponse.login_role === false ){
+        this.login_status.emit(true);
+        this.login_role.emit(false);
+        alert('vous etes connectes en tant qu\'Admin');
+      }
+    }, error => {alert('error'); } );
   }
 }

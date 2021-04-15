@@ -6,8 +6,9 @@
       </div>
       <ul class="nav navbar-nav" >
         <li routerLinkActive="active" *ngIf="!login"><a routerLink="login"><h1>Authentification</h1></a></li>
+        <li routerLinkActive="active" *ngIf="role&&login" ><a routerLink="/gestion-des-admins" ><h1> gestion des admins</h1></a></li>
         <li class="dropdown" routerLinkActive="active" *ngIf="login">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Commande
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#"><h2>Commande</h2>
             <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a routerLink="/lancer-commande">lancer une commande</a></li>
@@ -15,7 +16,7 @@
           </ul>
         </li>
         <li class="dropdown" routerLinkActive="active" *ngIf="login">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Gestion des comptes
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#"><h2>Gestion des comptes</h2>
             <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#">Clients</a></li>

@@ -5,5 +5,5 @@ import {Injectable, OnInit} from '@angular/core';
 })
 export class ConfigurationService {
   // tslint:disable-next-line:variable-name
-  public email_required = true;
+   email_required = false;
 }

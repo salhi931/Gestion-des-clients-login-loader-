@@ -1,10 +1,10 @@
 
-<div class="row">
+<div class="row" *ngIf="!login">
   <div class="col-xs-12">
     <form (ngSubmit)="authendicated(f)" #f="ngForm">
       <div class="row">
         <div class="col-sm-5 form-group">
-          <label  >Name</label>
+          <label  >Nom d'utilisateur | email </label>
           <input
             type="text"
             id="username"
@@ -24,9 +24,9 @@
             class="form-control"
             name="password"
             ngModel
-            required
-            pattern="^[1-9]+[0-9]*$"
-          >
+            required>
+            <!--pattern="^[1-9]+[0-9]*$" -->
+
         </div>
       </div>
       <div class="row">
@@ -37,27 +37,6 @@
     </form>
   </div>
 </div>
-
-<table>
-  <thead>
-  <tr>
-    <th scope="col">#</th>
-    <th scope="col">user</th>
-    <th scope="col">password</th>
-
-  </tr>
-  </thead>
-  <tbody *ngIf="loginService.user">
-  <tr *ngFor="let user of loginService.user._embedded.web_users; let i = index " >
-    <th scope="row">{{i+1}}</th>
-
-    <td>  {{ user.username }}  </td>
-    <td>{{ user.password  }}</td>
-
-  </tr>
-  </tbody>
-</table>
-
 
 
 
