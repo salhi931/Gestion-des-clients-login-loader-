@@ -9,12 +9,22 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './Web/login/login.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatProgressBar, MatProgressBarModule} from '@angular/material/progress-bar';
+
 import {MatInputModule} from '@angular/material/input';
-import { HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 
 import {ClientComponent} from './Web/clients/client.component';
 import { GestionDesAdminsComponent } from './Web/gestion-des-admins/gestion-des-admins.component';
-
+import {InterceptorService} from './services/interceptor.service';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatToolbar, MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatListModule} from '@angular/material/list';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,9 +43,20 @@ import { GestionDesAdminsComponent } from './Web/gestion-des-admins/gestion-des-
     MatFormFieldModule,
     MatProgressSpinnerModule,
     MatInputModule,
-    HttpClientModule
+    HttpClientModule,
+    MatProgressBarModule,
+    MatSidenavModule,
+    MatDividerModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    FlexLayoutModule,
+    MatMenuModule,
+    MatListModule
+],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true}
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

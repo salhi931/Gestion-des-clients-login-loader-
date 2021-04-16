@@ -13,9 +13,10 @@ import {ConfigurationService} from '../../services/configuration.service';
 export class LoginComponent implements OnInit {
   users: any;
   login: any;
+  // tslint:disable-next-line:variable-name
   constructor( public loginService: LoginService , private router: Router, private route: ActivatedRoute, public config: ConfigurationService) { }
   ngOnInit(): void {
-    this.loginService.getusers();
+    //  this.loginService.getusers();
     this.loginService.login_status.subscribe(data => {
       this.login = data;
     });
@@ -25,6 +26,6 @@ export class LoginComponent implements OnInit {
     const password = form.value.password;
     console.log(username);
     console.log(password);
-
     this.loginService.authendicated(form);
+
   }}

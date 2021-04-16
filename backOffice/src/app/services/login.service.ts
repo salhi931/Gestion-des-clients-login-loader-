@@ -26,9 +26,7 @@ export class LoginService implements OnInit{
       });
   }
   authendicated(form: NgForm){
-
-
-    this.http.get('http://localhost:8080/loginn/' + form.value.username + '/' + form.value.password).subscribe(data => {
+    this.http.get('http://localhost:8080/login/' + form.value.username + '/' + form.value.password).subscribe(data => {
       console.log(data);
       this.reponse = data;
       if (this.reponse.login_status === false){
@@ -42,8 +40,8 @@ export class LoginService implements OnInit{
       if (this.reponse.login_status === true && this.reponse.login_role === false ){
         this.login_status.emit(true);
         this.login_role.emit(false);
-        alert('vous etes connectes en tant qu\'Admin');
       }
-    }, error => {alert('error'); } );
+    }, error => {
+      alert('une erreur s\'est produite veuillez réessayer ou contacter votre administration'); } );
   }
 }

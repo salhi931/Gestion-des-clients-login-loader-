@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {GestionCleintsService} from '../../services/gestionCleints.service';
 
 @Component({
   selector: 'app-client',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./client.component.css']
 })
 export class ClientComponent implements OnInit {
-
-  constructor() { }
+  clients: any;
+  constructor(public gestionClient: GestionCleintsService) { }
 
   ngOnInit(): void {
+    this.gestionClient.getClients();
+    console.log(this.gestionClient.clients);
   }
 
 }

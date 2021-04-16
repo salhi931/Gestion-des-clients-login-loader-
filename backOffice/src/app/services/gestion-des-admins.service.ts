@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import {map} from 'rxjs/operators';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Form, NgForm} from '@angular/forms';
-import {Web_user} from '../models/web_user';
+//import {Web_user} from '../models/web_user';
 @Injectable({
   providedIn: 'root'
 })
@@ -21,8 +21,8 @@ export class GestionDesAdminsService implements OnInit{
         this.users = data;
       });
   }
-  AjouterAdmin(web_user: Web_user) {
-  }
+  //AjouterAdmin(web_user: Web_user) {
+  //}
 
   ngOnInit(): void {
   }

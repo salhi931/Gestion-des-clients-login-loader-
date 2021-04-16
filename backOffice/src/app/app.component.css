@@ -1,0 +1,25 @@
+.loader-container {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: black;
+  opacity: 0.8;
+  z-index: 99;
+}
+.loader-container ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+  stroke: #A52A2A;
+}
+:host{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+ul li {
+  list-style: none;
+}
+.mat-drawer {
+  width: 350px;
+}
+.mat-drawer-container{
+  height: 100%;
+}
